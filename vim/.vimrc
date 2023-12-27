@@ -81,6 +81,13 @@ nnoremap <silent> <C-i> :Buffers<CR>
 " let g:interestingWordsRandomiseColors = 1
 
 
+command! -bang AgCursorWord call fzf#vim#grep(
+    \   'ag --nogroup --nocolor '.expand('<cword>'), 1,
+    \   <bang>0 ? fzf#vim#with_preview('up:60%')
+    \           : fzf#vim#with_preview('right:50%', '?'),
+    \   <bang>0)
+nnoremap <C-G> :AgCursorWord<CR>
+
 
 
 
